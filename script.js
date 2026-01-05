@@ -1,19 +1,5 @@
 let resturantData = [
     {
-        name: "Shalwar Kameez",
-        price: "$15.99",
-        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto tempore dolore earum quasi repudiandae, rem, ipsa culpa fugiat ",
-        imgSrc: "https://th.bing.com/th/id/OIP.-DsTA0CHj0tgt7KRmdchWQHaHa?w=208&h=208&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-        category: "men"
-    },
-    {
-        name: "kurti",
-        price: "$2.99",
-        desc: "Lorem Iusto tempore dolore earum quasi repudiandae, rem, ipsa culpa fugiat ",
-        imgSrc: "https://tse3.mm.bing.net/th/id/OIP.-6L6iVgF_iEZQewahqxKkgHaKL?rs=1&pid=ImgDetMain&o=7&rm=3",
-        category: "women"
-    },
-    {
         name: "Gents Sandal",
         price: "$8.99",
         desc: "adipisicing elit. Iusto tempore dolore earum quasi, rem, ipsa culpa fugiat ",
@@ -49,6 +35,20 @@ let resturantData = [
         category: "dummy"
     },
     {
+        name: "kurti",
+        price: "$2.99",
+        desc: "Lorem Iusto tempore dolore earum quasi repudiandae, rem, ipsa culpa fugiat ",
+        imgSrc: "https://tse3.mm.bing.net/th/id/OIP.-6L6iVgF_iEZQewahqxKkgHaKL?rs=1&pid=ImgDetMain&o=7&rm=3",
+        category: "women"
+    },
+    {
+        name: "Shalwar Kameez",
+        price: "$15.99",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto tempore dolore earum quasi repudiandae, rem, ipsa culpa fugiat ",
+        imgSrc: "https://th.bing.com/th/id/OIP.-DsTA0CHj0tgt7KRmdchWQHaHa?w=208&h=208&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+        category: "men"
+    },
+    {
         name: "Cosmetics",
         price: "$14.99",
         desc: "adipisicing elit.quasi repudiandae, rem, ipsa culpa fugiat rem, ipsa culpa fugiat ",
@@ -65,11 +65,11 @@ function allMap() {
                 <div>
                     <h3 id="uiItemName">${item.name}</h3>
                     <div id="uiPrice">${item.price}</div>
-                    <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
                     </div><hr>
                     <p id="uiDesc">
                     ${item.desc}
-                </p>
+                    </p>
+                    <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
             </div>
         </div>`
         document.getElementById(`image${imageNum}`).style.backgroundImage = `url(${item.imgSrc})`
@@ -95,10 +95,10 @@ function itemsFinder(x) {
                     <h3 id="uiItemName">${item.name}</h3>
                     <div id="uiPrice">${item.price}</div>
                     <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
-                </div><hr>
-                <p id="uiDesc">
+                    </div><hr>
+                    <p id="uiDesc">
                     ${item.desc}
-                </p>
+                    </p>
             </div>
         </div>`
     document.getElementById(`image${imageNum}`).style.backgroundImage = `url(${item.imgSrc})`
