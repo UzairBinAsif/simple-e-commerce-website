@@ -55,6 +55,7 @@ body {
     transition: all 0.1s ease-in-out;
     border-radius: 5px;
     padding: 5px 8px;
+    box-shadow: 0px 7px 5px 0px rgba(0, 0, 0, 0.369);
 }
 
 .card:hover {
@@ -119,20 +120,55 @@ body {
     font-size: 18px;
 }
 
+.cartCards {
+    width: 25%;
+    height: 200px;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 5px 8px;
+}
+
+.cartCards:hover {
+    background-color: #e3e3e3;
+}
+
+#totalForCart {
+    margin-top: 20px;
+    display: none;
+}
+
+#totalSpan {
+    color: rgb(182, 130, 0);
+}
+
+#AccountName {
+    font-size: 20px;
+}
+
+#logins {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 @media screen and (max-width: 1320px) {
     .mainSearchBox {
         width: 355px;
     }
 }
 
-@media screen and (max-width: 320px) {
-    .card {
-        height: 350px;
-        width: 280px;
+@media screen and (max-width: 990px) {
+    .cartCards {
+        width: 40%;
     }
+}
 
-    #search {
-        width: 70%;
+@media screen and (max-width: 768px) {
+    .cartCards {
+        width: 300px;
     }
 }
 
@@ -144,8 +180,19 @@ body {
         width: 300px;
         box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.369);
     }
-
+    
     .menuContainer {
         gap: 45px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        height: 350px;
+        width: 280px;
+    }
+
+    #search {
+        width: 70%;
     }
 }

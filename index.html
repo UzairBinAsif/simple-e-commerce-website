@@ -29,10 +29,13 @@
           <a class="nav-link active" aria-current="page" onclick="itemsFinder('dummy')" href="#">Dummy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" onclick="itemsFinder('cart')" href="#">Cart</a>
+          <a class="nav-link active" aria-current="page" onclick="showCartItems()" href="#">Cart</a>
         </li>
       </ul>
-        <button class="btn btn-outline-success" type="button" onclick="window.location.href='signup.html'">Login / Signup</button>
+      <div id="logins">
+        <span id="AccountName"></span>
+        <button id="loginBtn" class="btn btn-outline-success" type="button" onclick="window.location.href='signup.html'">Login / Signup</button>
+      </div>
     </div>
   </div>
     </nav>
@@ -44,6 +47,7 @@
                 <i onclick="searchItems()" class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
+        <h4 id="totalForCart">Total: <span id="totalSpan">$0</span></h4>
         <div class="menuContainer"></div>
     </div>
     <script src="./script.js"></script>

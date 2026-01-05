@@ -58,6 +58,7 @@ let resturantData = [
 ]
 
 function allMap() {
+    totalForCart.style.display = "none"
     resturantData.map((item) => {
         menuContainer.innerHTML += `<div class="card">
         <div class="image" id="image${imageNum}"></div>
@@ -69,7 +70,7 @@ function allMap() {
                     <p id="uiDesc">
                     ${item.desc}
                     </p>
-                    <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
+                    <button onclick="addToCart(this)" class="addToCart">Add to cart</button>
             </div>
         </div>`
         document.getElementById(`image${imageNum}`).style.backgroundImage = `url(${item.imgSrc})`
@@ -78,6 +79,7 @@ function allMap() {
 }
 
 function itemsFinder(x) {
+    totalForCart.style.display = "none"
     imageNum = 0
     menuContainer.innerHTML = ""
     resturantData.filter((item) => {
@@ -94,7 +96,7 @@ function itemsFinder(x) {
                 <div>
                     <h3 id="uiItemName">${item.name}</h3>
                     <div id="uiPrice">${item.price}</div>
-                    <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
+                    <button onclick="addToCart(this)" class="addToCart">Add to cart</button>
                     </div><hr>
                     <p id="uiDesc">
                     ${item.desc}
@@ -107,6 +109,7 @@ function itemsFinder(x) {
 }
 
 function searchItems() {
+    totalForCart.style.display = "none"
     imageNum = 0
     menuContainer.innerHTML = ""
     let userInput = document.getElementById("search")
@@ -121,7 +124,7 @@ function searchItems() {
                         <div>
                             <h3 id="uiItemName">${item.name}</h3>
                             <div id="uiPrice">${item.price}</div>
-                            <button onclick="addToCart(this.parentElement)" class="addToCart">Add to cart</button>
+                            <button onclick="addToCart(this)" class="addToCart">Add to cart</button>
                         </div><hr>
                         <p id="uiDesc">
                             ${item.desc}
@@ -140,10 +143,64 @@ function searchItems() {
 }
 
 function addToCart(x) {
-    console.log(x)
+    let cartData = localStorage.getItem("cart")
+    cartData = JSON.parse(cartData) || []
+
+    let itemName = x.closest(".card").querySelector("#uiItemName").innerText
+    let itemPrice = x.closest(".card").querySelector("#uiPrice").innerText
+    let itemDesc = x.closest(".card").querySelector("#uiDesc").innerText
+
+    let currentCart = {
+        itemName : itemName,
+        itemPrice : itemPrice,
+        itemDesc : itemDesc
+    }
+
+    cartData.push(currentCart)
+
+    let jsonCartData = JSON.stringify(cartData)
+    localStorage.setItem("cart", jsonCartData)
 }
+
+function showCartItems() {
+    totalForCart.style.display = "block"
+    let totalCost = 0;
+    let cartData = localStorage.getItem("cart")
+    cartData = JSON.parse(cartData)
+    
+    menuContainer.innerHTML = ""
+    cartData.map((item) => {
+        menuContainer.innerHTML += `
+        <div class="cartCards">
+            <div>
+                <h3 id="uiItemName">${item.itemName}</h3>
+                <div id="uiPrice">${item.itemPrice}</div>
+                </div><hr>
+                <p id="uiDesc">
+                ${item.itemDesc}
+                </p>
+            </div>
+        </div>`
+        totalCost += Number(item.itemPrice.replace(/[^\d.]/g, ""))
+    })
+    totalSpan.innerText = "$"
+    totalSpan.innerText += totalCost
+}
+
 let allBtn = document.querySelector("#all")
 let menuContainer = document.querySelector(".menuContainer")
+let totalForCart = document.querySelector("#totalForCart")
+let totalSpan = document.querySelector("#totalSpan")
+let AccountName = document.querySelector("#AccountName")
+let loginBtn = document.querySelector("#loginBtn")
 let imageNum = 0
+let loggedInUser = JSON.parse(localStorage.getItem("currentUser")).userName || ""
 
+if (loggedInUser) {
+    loginBtn.innerText = "Logout"
+} else {
+    loginBtn.innerText = "Login / Signup"
+}
+
+AccountName.innerText = loggedInUser
 allMap()

@@ -41,7 +41,7 @@ function signup() {
     let email = validateEmail("email")
     let pass = validatePassword("pass")
     
-    let dataStorage = localStorage.getItem("userData")
+    let dataStorage = localStorage.getItem("users")
     dataStorage = JSON.parse(dataStorage) || []
 
     if (userName) {
@@ -62,16 +62,16 @@ function signup() {
                     }
                 })
 
-                let currentUserData = {
+                let currentUsers = {
                     userName : userName,
                     email : email,
                     pass : pass,
                 }
 
-                dataStorage.push(currentUserData)
+                dataStorage.push(currentUsers)
                 
                 let jsonData = JSON.stringify(dataStorage)
-                localStorage.setItem("userData", jsonData)
+                localStorage.setItem("users", jsonData)
                 
                 setTimeout(() => {
                     window.location.reload()
@@ -105,7 +105,7 @@ function login() {
     let email = validateEmail("login-email")
     let pass = validatePassword("login-pass")
     
-    let dataStorage = localStorage.getItem("userData")
+    let dataStorage = localStorage.getItem("users")
     dataStorage = JSON.parse(dataStorage) || []
 
     if (email) {
@@ -113,7 +113,13 @@ function login() {
             for (var i = 0; i < dataStorage.length; i++) {
                 if (email == dataStorage[i].email) {
                     if (pass == dataStorage[i].pass) {
-                        let timerInterval;                    
+                        let currentUser = {
+                            userName : dataStorage[i].userName
+                        }
+                        currentUser = JSON.stringify(currentUser)
+                        localStorage.setItem("currentUser", currentUser)
+                        
+                        let timerInterval;
                         Swal.fire({
                             title: "Login Success!",
                             html: "Redirecting you to homepage in a sec.",

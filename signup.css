@@ -201,3 +201,10 @@
 .main-container {
     background-color: red;
 }
+
+.fa-x {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
