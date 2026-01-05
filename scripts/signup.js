@@ -50,7 +50,7 @@ function signup() {
                 let timerInterval;                    
                 Swal.fire({
                     title: "Signup Success!",
-                    html: "Creating Account and Redirecting you to home page in a sec.",
+                    html: "Creating Account and Redirecting you to Login page in a sec.",
                     icon: "success",
                     timer: 5000,
                     timerProgressBar: true,
@@ -74,7 +74,7 @@ function signup() {
                 localStorage.setItem("userData", jsonData)
                 
                 setTimeout(() => {
-                    window.location.replace("/index.html")
+                    window.location.reload()
                 }, 5000);
                 
             } else {
