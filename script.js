@@ -194,13 +194,15 @@ let totalSpan = document.querySelector("#totalSpan")
 let AccountName = document.querySelector("#AccountName")
 let loginBtn = document.querySelector("#loginBtn")
 let imageNum = 0
-let loggedInUser = JSON.parse(localStorage.getItem("currentUser")).userName || ""
+let loggedInUser = localStorage.getItem("currentUser") || ""
 
 if (loggedInUser) {
+    loggedInUser = JSON.parse(loggedInUser).userName
     loginBtn.innerText = "Logout"
 } else {
     loginBtn.innerText = "Login / Signup"
 }
+
 
 AccountName.innerText = loggedInUser
 allMap()
