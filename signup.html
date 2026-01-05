@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="./signup.css">
+</head>
+<body>
+<div class="wrapper">
+        <div class="card-switch">
+            <label class="switch">
+               <input type="checkbox" class="toggle">
+               <span class="slider"></span>
+               <span class="card-side"></span>
+               <div class="flip-card__inner">
+                  <div class="flip-card__front">
+                     <div class="title">Log in</div>
+                     <form class="flip-card__form" action="">
+                        <input class="flip-card__input" name="email" placeholder="Email" type="email" id="login-email">
+                        <input class="flip-card__input" name="password" placeholder="Password" type="password" id="login-pass">
+                        <button class="flip-card__btn" onclick="login()">Log In!</button>
+                     </form>
+                  </div>
+                  <div class="flip-card__back">
+                     <div class="title">Sign up</div>
+                     <form class="flip-card__form" action="">
+                        <input class="flip-card__input" placeholder="Name" type="name" id="user-name">
+                        <input class="flip-card__input" name="email" id="email" placeholder="Email" type="email">
+                        <input class="flip-card__input" name="password" id="pass" placeholder="Password" type="password">
+                        <button class="flip-card__btn" onclick="signup()">Sign Up!</button>
+                     </form>
+                  </div>
+               </div>
+            </label>
+        </div>   
+   </div>
+   <script src="./scripts/signup.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
